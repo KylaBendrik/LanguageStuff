@@ -66,7 +66,7 @@ function printIPA(word, print){
 
   word.forEach(function(syllable){
     syllable.forEach(function(letter){
-      ipa.push(letter.phoneme);
+      ipa.push(calcIPA(letter, word, sylNum, letNum, print));
       letNum++;
     })
     
