@@ -1,11 +1,16 @@
 //consonant = 0, vowel = 1;
 let syllTypes = [[0, 1], [1, 0], [0, 1, 0]];
 
+let print = []
+let ipa = []
+
 function rand(upperLimit, x){
   let lowerLimit = x
 
   if (x === undefined){
     lowerLimit = 0;
+  } else {
+    upperLimit -= lowerLimit;
   }
   return (Math.floor(Math.random() * upperLimit) + lowerLimit)
 }
@@ -23,24 +28,47 @@ function newSyllable(){
     }
   })
 
-  return printSyllable(syllable);
+  return syllable;
 }
 
-function printSyllable(syllable){
-  let array = []
+function newWord(){
+  let sylls = rand(4, 1);
+  console.log(sylls)
+  let i = 0;
+  let word = []
+  while (i<sylls){
+    word.push(newSyllable())
 
-  syllable.forEach(function(letter){
-    array.push(letter.letter)
+    i++;
+  }
+
+  return word;
+}
+
+function printWord(word){
+  console.log(word)
+
+  word.forEach(function(syllable){
+    syllable.forEach(function(letter){
+      print.push(letter.letter);
+    })
   })
 
-  return array.join('')
+
+  return print.join("");
 }
 
-function printWord(wordDiv, ipaDiv){
-  wordDiv.append(document.createTextNode(newSyllable()))
-  ipaDiv.append(document.createTextNode("ipa"))
+function printIPA(word){
+  return "ipa";
 }
+
+function printAll(wordDiv, ipaDiv, word){
+  wordDiv.append(document.createTextNode(printWord(word)))
+  ipaDiv.append(document.createTextNode("/" + printIPA(word) + "/"))
+}
+
+let word = newWord();
 
 let wordDiv = document.getElementById("word")
 let ipaDiv = document.getElementById("ipa")
-printWord(wordDiv, ipa)
+printAll(wordDiv, ipaDiv, word)
