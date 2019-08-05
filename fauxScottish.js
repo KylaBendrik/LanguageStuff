@@ -58,13 +58,31 @@ function printWord(word){
   return print.join("");
 }
 
-function printIPA(word){
-  return "ipa";
+function printIPA(word, print){
+  console.log(print)
+
+  let letNum = 0;
+  let sylNum = 0;
+
+  word.forEach(function(syllable){
+    syllable.forEach(function(letter){
+      ipa.push(letter.phoneme);
+      letNum++;
+    })
+    
+    sylNum++;
+
+    if (sylNum < word.length){
+      ipa.push(".")
+    }
+  })
+
+  return ipa.join('');
 }
 
 function printAll(wordDiv, ipaDiv, word){
   wordDiv.append(document.createTextNode(printWord(word)))
-  ipaDiv.append(document.createTextNode("/" + printIPA(word) + "/"))
+  ipaDiv.append(document.createTextNode("/" + printIPA(word, print) + "/"))
 }
 
 let word = newWord();

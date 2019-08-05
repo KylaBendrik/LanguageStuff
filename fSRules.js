@@ -12,8 +12,10 @@ let vowels = [
 
   //broad rules: 00
 
-    function R0(letter, word){
+    function R0(letter, print){
       //if letter is consonant, and next letter is vowel a, o, or u, then use R0
+
+      
 
     }
 
@@ -25,6 +27,6 @@ let vowels = [
 
 //vowel rules: 1
 
-function R1(letter, word){
+function R1(letter, print){
 
 }
