@@ -1,8 +1,7 @@
 //consonant = 0, vowel = 1;
 let syllTypes = [[0, 1], [1, 0], [0, 1, 0]];
 
-let print = []
-let ipa = []
+let word = {syllables: [], ipa: [], print: []}
 
 function rand(upperLimit, x){
   let lowerLimit = x
@@ -15,77 +14,46 @@ function rand(upperLimit, x){
   return (Math.floor(Math.random() * upperLimit) + lowerLimit)
 }
 
-function newSyllable(){
-  let type = syllTypes[rand(syllTypes.length)]
-  let syllable = []
-
-  type.forEach(function(letter){
-    if (letter === 0){
-      syllable.push(consonants[rand(consonants.length)])
-    }
-    if (letter === 1){
-      syllable.push(vowels[rand(vowels.length)])
-    }
-  })
-
-  return syllable;
+function printAll(wordDiv, ipaDiv, word){
+  wordDiv.append(document.createTextNode(printWord(word)))
+  ipaDiv.append(document.createTextNode("/" + printIPA(word) + "/"))
 }
 
-function newWord(){
-  let sylls = rand(4, 1);
-  console.log(sylls)
+function initWord(){
+  let sylls = rand(3, 1);
   let i = 0;
-  let word = []
-  while (i<sylls){
-    word.push(newSyllable())
 
+  while(i < sylls){
+    syllType = syllTypes[rand(syllTypes.length)]
+    let newSyllable = []
+
+    syllType.forEach(function(type){
+      let newLetter = {}
+      if (type === 0){
+        newLetter = consonants[rand(consonants.length)]
+      } else{
+        newLetter = vowels[rand(vowels.length)]
+      }
+      
+      newSyllable.push(newLetter)
+            word.print.push(newLetter.letter)
+    })
+
+    word.syllables.push(newSyllable)
+    
     i++;
   }
-
-  return word;
 }
 
 function printWord(word){
-  console.log(word)
-
-  word.forEach(function(syllable){
-    syllable.forEach(function(letter){
-      print.push(letter.letter);
-    })
-  })
-
-
-  return print.join("");
+  return word.print.join("")
 }
 
-function printIPA(word, print){
-  console.log(print)
-
-  let letNum = 0;
-  let sylNum = 0;
-
-  word.forEach(function(syllable){
-    syllable.forEach(function(letter){
-      ipa.push(calcIPA(letter, word, sylNum, letNum, print));
-      letNum++;
-    })
-    
-    sylNum++;
-
-    if (sylNum < word.length){
-      ipa.push(".")
-    }
-  })
-
-  return ipa.join('');
+function printIPA(word){
+  return word.ipa
 }
 
-function printAll(wordDiv, ipaDiv, word){
-  wordDiv.append(document.createTextNode(printWord(word)))
-  ipaDiv.append(document.createTextNode("/" + printIPA(word, print) + "/"))
-}
-
-let word = newWord();
+initWord();
 
 let wordDiv = document.getElementById("word")
 let ipaDiv = document.getElementById("ipa")
