@@ -10,10 +10,9 @@ function rand(upperLimit, x){
 }
 
 var click = 0;
-
 var isPaused = false;
+const interval = 1;
 
-const interval = 10
 
 var timer = setInterval(doStuff, interval);
 
@@ -29,6 +28,9 @@ function doStuff() {
     day = 1;
   }
   document.getElementById("year").innerHTML = month + "/" + day + "/" + year;
+
+  printColony();
+  printPop();
 }
 
 function stopStuff() {
