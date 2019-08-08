@@ -13,13 +13,22 @@ var click = 0;
 
 var isPaused = false;
 
-const interval = 500
+const interval = 10
 
 var timer = setInterval(doStuff, interval);
 
 function doStuff() {
-  year += 1;
-  document.getElementById("year").innerHTML = "Year: " + year;
+  day += 1;
+  if (day === 31){
+    month += 1;
+    day = 1;
+  }
+  if (month === 13){
+    year += 1;
+    month = 1;
+    day = 1;
+  }
+  document.getElementById("year").innerHTML = month + "/" + day + "/" + year;
 }
 
 function stopStuff() {

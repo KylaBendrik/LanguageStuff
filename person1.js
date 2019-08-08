@@ -14,7 +14,7 @@ function newLifeEvent(year, place){
 }
 
 //define person
-function newPerson(genOverwrite){
+function newPerson(father, mother, genOverwrite){
   let gender = 0
 
   //gender - Male 1, female 0
@@ -22,6 +22,10 @@ function newPerson(genOverwrite){
     gender = genOverwrite
   } else{
     gender = rand(1,0)
+  }
+
+  if (father === undefined){
+    
   }
 
   return {

@@ -1,6 +1,8 @@
 //How many families in our colony?
 let startingNum = 2;
 let population = [];
+let day = 1;
+let month = 1;
 let year = 0;
 
 function initColony(){
