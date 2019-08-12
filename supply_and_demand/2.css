@@ -1,0 +1,24 @@
+#acresDiv {
+  background-color: #dddddd;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 400px;
+}
+
+#acresTable{
+  width: 100%;
+}
+
+table{
+  border: 4px double black;
+  border-spacing: 0px;
+  border-radius: 10px;
+}
+
+th,td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10;
+}

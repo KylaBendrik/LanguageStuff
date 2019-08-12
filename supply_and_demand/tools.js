@@ -11,7 +11,7 @@ function rand(upperLimit, x){
 
 var click = 0;
 var isPaused = false;
-const interval = 1;
+const interval = 50;
 
 
 var timer = setInterval(doStuff, interval);
@@ -21,14 +21,21 @@ function doStuff() {
   if (day === 31){
     month += 1;
     day = 1;
+    if (month < 13){newWeather();}
+    
   }
   if (month === 13){
     year += 1;
     month = 1;
+    newWeather();
     day = 1;
   }
-  document.getElementById("year").innerHTML = month + "/" + day + "/" + year;
+  printWorld()
 
+
+  houses.forEach(function(house){
+    eatFood(house);
+  })
   printColony();
   printPop();
 }

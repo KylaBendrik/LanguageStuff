@@ -31,13 +31,45 @@ function newPerson(father, mother, house, genOverwrite){
 
   let person = {
     id: personId,
+    alive: true,
     gender: gender,
     birth: birth,
-    house: house
+    house: house,
+    job: 1
   }
 
   personId ++;
 
   return person;
+
+};
+
+function eatFood(house){
+  let food = house.resources.food
+  let family = []
+
+  population.forEach(function(person){
+    if (person.house === house.id && person.alive){
+      family.push(person)
+    }
+  })
+
+  //Barley = 96289 calories per bushel
+
+  let caloriesAvailable = food.barley * 96289
+
+  //for now, each person needs 1800 calories every day
+
+  let demand = 1800
+
+  let caloriesNeeded = demand * family.length
+
+  if (caloriesNeeded < caloriesAvailable){
+    family.forEach(function(person){
+      food.barley -= 0.019;
+    })
+  }
+
+
 
 }
