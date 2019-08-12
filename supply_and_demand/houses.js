@@ -21,14 +21,14 @@ function newHouse(headOfHouse, acresNum){
     acres: [],
     resources: {
       money: 10,
-      food: {barley: 10}
+      food: {barley: 1}
     }
   }
 
   let i = 0
 
   while (i<acresNum){
-    let acre = newAcre()
+    let acre = newAcre(house.id)
     house.acres.push(acre)
     acres.push(acre)
 
@@ -39,11 +39,12 @@ function newHouse(headOfHouse, acresNum){
   return house 
 }
 
-function newAcre(){
+function newAcre(house){
   return {
     id: acres.length,
-    soilQuality: 50,
-    crop: {type: -1, age: 0}
+    house: house,
+    soilQuality: rand(100, 0),
+    crop: {type: 0, age: 0}
   }
 }
 

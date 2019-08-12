@@ -11,7 +11,7 @@ function rand(upperLimit, x){
 
 var click = 0;
 var isPaused = false;
-const interval = 50;
+const interval = 500;
 
 
 var timer = setInterval(doStuff, interval);
@@ -36,6 +36,7 @@ function doStuff() {
   houses.forEach(function(house){
     eatFood(house);
   })
+  
   printColony();
   printPop();
 

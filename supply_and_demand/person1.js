@@ -40,7 +40,7 @@ function newPerson(father, mother, house, genOverwrite){
       hunger: 2000
     },
     skills: {
-      farming: 0
+      farming: 1
     }
   }
 
@@ -60,10 +60,8 @@ function eatFood(house){
     if (person.house === house.id && person.alive){
       family.push(person);
       houseHunger += person.needs.hunger;
-      console.log ("hunger: " + person.needs.hunger)
     }
   })
-  console.log(houseHunger)
 
   //Barley = 96289 calories per bushel
 
@@ -78,6 +76,17 @@ function eatFood(house){
     })
   }
   //otherwise, every gets an equal share of what's left in the house, and trigger a console.log for "buy food now"
+  else {
+    let portion = caloriesAvailable/family.length
+
+    family.forEach(function(person){
+      person.needs.hunger -= portion
+    })
+
+    food.barley = 0;
+
+    console.log("buy food now!")
+  }
 }
 
 function getHungry(){

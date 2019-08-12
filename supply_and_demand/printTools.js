@@ -22,7 +22,7 @@ function printPop(){
     CellGender.appendChild(document.createTextNode(printGender(person.gender)));
     CellBirthDay.appendChild(document.createTextNode(person.birth.month + "/" + person.birth.day + "/" + person.birth.year));
     CellJob.appendChild(document.createTextNode(jobs[person.job]));
-    CellHunger.appendChild(document.createTextNode(person.needs.hunger));
+    CellHunger.appendChild(document.createTextNode(person.needs.hunger.toFixed(0)));
     CellHouse.appendChild(document.createTextNode(printHouse(person.house)));
     CellAcres.appendChild(document.createTextNode(printAcres(person.house)));
     CellBarley.appendChild(document.createTextNode(houses[person.house].resources.food.barley.toFixed(2) + " bushels Barley"));
@@ -55,6 +55,8 @@ function printColony(){
   let popStatus = document.getElementById("popStatus")
 
   popStatus.innerHTML = "Population: " + population.length
+
+  printAcresTable();
 }
 
 function printGender(gender){
@@ -63,4 +65,41 @@ function printGender(gender){
   } else {
     return "female"
   }
+}
+
+function printCrop(acre){
+  return crops[acre.crop.type].name
+}
+
+function printAcresTable(){
+  let Acrestbody = document.getElementById("acresTbody");
+  let newAcresTbody = document.createElement("tbody")
+
+  acres.forEach(function(acre){
+    let row = document.createElement("tr")
+
+    let cellAcreHouse = document.createElement("td")
+    let cellAcreID = document.createElement("td")
+    let cellAcreQuality = document.createElement("td")
+    let cellAcreCrop = document.createElement("td")
+    let cellAcreAge = document.createElement("td")
+
+    cellAcreHouse.appendChild(document.createTextNode(acre.house));
+    cellAcreID.appendChild(document.createTextNode(acre.id));
+    cellAcreQuality.appendChild(document.createTextNode(acre.soilQuality));
+    cellAcreCrop.appendChild(document.createTextNode(printCrop(acre)));
+    cellAcreAge.appendChild(document.createTextNode(acre.crop.age));
+
+    row.appendChild(cellAcreHouse)
+    row.appendChild(cellAcreID)
+    row.appendChild(cellAcreQuality)
+    row.appendChild(cellAcreCrop)
+    row.appendChild(cellAcreAge)
+
+    newAcresTbody.appendChild(row)
+  })
+
+  newAcresTbody.id = "acresTbody"
+  Acrestbody.parentNode.replaceChild(newAcresTbody, Acrestbody)
+  return Acrestbody;
 }
