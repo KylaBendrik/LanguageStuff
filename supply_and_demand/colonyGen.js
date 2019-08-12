@@ -11,6 +11,8 @@ function initColony(){
   initHouses();
 }
 
+
+
 initColony();
 
 printColony();

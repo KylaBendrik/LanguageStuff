@@ -38,6 +38,8 @@ function doStuff() {
   })
   printColony();
   printPop();
+
+  getHungry()
 }
 
 function stopStuff() {

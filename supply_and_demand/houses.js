@@ -20,6 +20,7 @@ function newHouse(headOfHouse, acresNum){
     headOfHouse: headOfHouse,
     acres: [],
     resources: {
+      money: 10,
       food: {barley: 10}
     }
   }

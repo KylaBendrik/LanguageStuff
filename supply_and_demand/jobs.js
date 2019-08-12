@@ -18,7 +18,7 @@ let baseBarley = {
 
 let barley = [baseBarley]
 
-let crops = [barleys]
+let crops = [barley]
 //yield
 //ripen time
 

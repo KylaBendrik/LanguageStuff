@@ -13,6 +13,7 @@ function printPop(){
     let CellGender = document.createElement("td")
     let CellBirthDay = document.createElement("td")
     let CellJob = document.createElement("td")
+    let CellHunger = document.createElement("td")
     let CellHouse = document.createElement("td")
     let CellAcres = document.createElement("td")
     let CellBarley = document.createElement("td")
@@ -21,6 +22,7 @@ function printPop(){
     CellGender.appendChild(document.createTextNode(printGender(person.gender)));
     CellBirthDay.appendChild(document.createTextNode(person.birth.month + "/" + person.birth.day + "/" + person.birth.year));
     CellJob.appendChild(document.createTextNode(jobs[person.job]));
+    CellHunger.appendChild(document.createTextNode(person.needs.hunger));
     CellHouse.appendChild(document.createTextNode(printHouse(person.house)));
     CellAcres.appendChild(document.createTextNode(printAcres(person.house)));
     CellBarley.appendChild(document.createTextNode(houses[person.house].resources.food.barley.toFixed(2) + " bushels Barley"));
@@ -30,9 +32,14 @@ function printPop(){
     row.appendChild(CellGender)
     row.appendChild(CellBirthDay)
     row.appendChild(CellJob)
+    row.appendChild(CellHunger)
     row.appendChild(CellHouse)
     row.appendChild(CellAcres)
     row.appendChild(CellBarley)
+
+    if (person.alive === false){
+      row.style.backgroundColor = "red"
+    }
 
 
     newTbody.appendChild(row)
