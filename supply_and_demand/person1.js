@@ -40,7 +40,8 @@ function newPerson(father, mother, house, genOverwrite){
       hunger: 2000
     },
     skills: {
-      farming: 1
+      farming: 1,
+      teaching: 1
     }
   }
 

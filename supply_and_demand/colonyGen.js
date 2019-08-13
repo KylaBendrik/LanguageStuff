@@ -6,6 +6,7 @@ let acres = []
 let day = 1;
 let month = 1;
 let year = 20;
+let monthsRain = 0
 
 function initColony(){
   initHouses();

@@ -11,32 +11,33 @@ function rand(upperLimit, x){
 
 var click = 0;
 var isPaused = false;
-const interval = 500;
+const interval = 50;
 
 
 var timer = setInterval(doStuff, interval);
 
-function doStuff() {
+function doStuff() {;
   day += 1;
   if (day === 31){
     month += 1;
     day = 1;
-    if (month < 13){newWeather();}
-    
+    monthRain = 0
   }
   if (month === 13){
     year += 1;
     month = 1;
-    newWeather();
     day = 1;
   }
+  
+  newWeather()
   printWorld()
 
 
   houses.forEach(function(house){
     eatFood(house);
+    farming(house);
   })
-  
+
   printColony();
   printPop();
 

@@ -1,6 +1,6 @@
 function printWorld(){
   document.getElementById("year").innerHTML = month + "/" + day + "/" + year;
-  document.getElementById("weather").innerHTML = "Temp: " + weather.temperature + "° F, Rain " + weather.rain + "mm";
+  document.getElementById("weather").innerHTML = "Temp: " + weather.temperature.toFixed(0) + "° F, Rain " + monthsRain.toFixed(0) + "mm, " + weather.status;
 }
 
 function printPop(){

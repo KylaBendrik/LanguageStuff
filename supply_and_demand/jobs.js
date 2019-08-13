@@ -1,10 +1,5 @@
 const jobs = ["None", "Farmer"];
 
-function checkTasks(person){
-  if (person.job === 1){
-    farmerTask(houses[person.house])
-  }
-}
 
 //1) FARMER
 
@@ -19,7 +14,8 @@ let barley = {
   yield: [4, 4.01],
   calBushel: [96000, 96300],
   ripenTime: [60, 70],
-  plantTime: {month: 4, day: 20}
+  plantTime: {month: 4, day: 20},
+  maxTemp: 85,
 }
 
 let crops = [{id: 0, name: "fallow"}, barley]
@@ -29,7 +25,7 @@ let crops = [{id: 0, name: "fallow"}, barley]
 //check for tasks
 
 //Is there an empty acre?
-function farmerTask(house){
+function findEmptyAcres(house){
   let emptyAcres = []
 
   house.acres.forEach(function(acre){
@@ -40,16 +36,24 @@ function farmerTask(house){
 
   console.log("empty acres: ")
   console.log(emptyAcres)
+
+  return emptyAcres
 }
 
-
-function plantCrop(crop, acre){
-
+//pick a crop
+function pickCrop(farmer, acre){
+  return 1;
 }
 
-function printCrop(crop){
+function farming(house){
+  if (month === 1 && day === 15){
+    //on January 15, the head of house decides what will be planted in each acre
+    let emptyAcres = findEmptyAcres(house);
+
+    emptyAcres.forEach(function(acre){
+      acre.crop.type = pickCrop(house.headOfHouse, acre)
+    })
+  }
+
 
 }
-
-//So, mutation by pound. 48 pounds per bushel, 48 chances for a slightly different plant for each bushel harvested
-//calculate mutation when harvesting
