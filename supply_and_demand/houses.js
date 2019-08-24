@@ -21,7 +21,7 @@ function newHouse(headOfHouse, acresNum){
     acres: [],
     resources: {
       money: 10,
-      food: {barley: 1}
+      food: {barley: 12}
     }
   }
 

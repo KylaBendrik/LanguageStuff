@@ -51,6 +51,18 @@ function newPerson(father, mother, house, genOverwrite){
 
 };
 
+function family(house){
+  let family = []
+
+  population.forEach(function(person){
+    if (person.house === house.id && person.alive){
+      family.push(person);
+    }
+  })
+
+  return family
+}
+
 function eatFood(house){
   let food = house.resources.food
   let family = []

@@ -17,6 +17,8 @@ function printPop(){
     let CellHouse = document.createElement("td")
     let CellAcres = document.createElement("td")
     let CellBarley = document.createElement("td")
+    let CellDTP = document.createElement("td")
+    let CellDTS = document.createElement("td")
 
     CellId.appendChild(document.createTextNode(person.id));
     CellGender.appendChild(document.createTextNode(printGender(person.gender)));
@@ -26,6 +28,8 @@ function printPop(){
     CellHouse.appendChild(document.createTextNode(printHouse(person.house)));
     CellAcres.appendChild(document.createTextNode(printAcres(person.house)));
     CellBarley.appendChild(document.createTextNode(houses[person.house].resources.food.barley.toFixed(2) + " bushels Barley"));
+    CellDTP.appendChild(document.createTextNode(desireToPurchase(houses[person.house], houses[person.house].resources.food.barley)));
+    CellDTS.appendChild(document.createTextNode(desireToSell(houses[person.house], houses[person.house].resources.food.barley)));
 
 
     row.appendChild(CellId)
@@ -36,6 +40,8 @@ function printPop(){
     row.appendChild(CellHouse)
     row.appendChild(CellAcres)
     row.appendChild(CellBarley)
+    row.appendChild(CellDTP)
+    row.appendChild(CellDTS)
 
     if (person.alive === false){
       row.style.backgroundColor = "red"

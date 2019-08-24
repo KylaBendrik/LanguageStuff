@@ -32,11 +32,14 @@ function doStuff() {;
   newWeather()
   printWorld()
 
+  
+  growing()
 
   houses.forEach(function(house){
     eatFood(house);
     farming(house);
   })
+
 
   printColony();
   printPop();
