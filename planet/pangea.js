@@ -44,9 +44,26 @@ function ifBlack(map, r, c){
     sides.push(map[r + 1][c][0])
   }
 
-  let select = rand(sides.length)
+  let newSides = []
 
-  return sides[select]
+  sides.forEach(function(side){
+    newSides.push(side)
+    if (side === 1){
+      //if it's black, it's added twice
+      newSides.push(side);
+      newSides.push(side);
+      newSides.push(side);
+      newSides.push(side);
+      newSides.push(side);
+    }
+  })
+  console.log("sides")
+  console.log(newSides)
+
+  let select = rand(newSides.length)
+  console.log(newSides[select])
+
+  return newSides[select]
 }
 
 function genPangea(width, height){
@@ -60,13 +77,14 @@ function genPangea(width, height){
 
   //let's go in triangle down from pixel
   let nD = 1
-  for(rD = startRow + nD; rD < height; rD++){
+  for(rD = startRow + nD; rD < height - 2; rD++){
     map[rD][startCol][0] = ifBlack(map, rD, startCol);
+    console.log(map[rD][startCol][0])
 
     for(i = 0; i < nD; i++){
       //color in on each side
-      map[rD][startCol + i][0] = 1
-      map[rD][startCol - i][0] = 1
+      map[rD][startCol + i][0] = ifBlack(map, rD, startCol + i)
+      map[rD][startCol - i][0] = ifBlack(map, rD, startCol - i)
     }
 
     nD += 1;
